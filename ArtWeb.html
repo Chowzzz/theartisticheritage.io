@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fred & Lang Dulay | Portfolio & Gallery</title>
+    
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts for a museum/gallery aesthetic -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        gallery: {
+                            50: '#f9f9f9',
+                            100: '#f4f4f0',
+                            800: '#2c2c2c',
+                            900: '#1a1a1a',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Smooth scrolling for navigation links */
+        html { 
+            scroll-behavior: smooth; 
+        }
+        
+        /* Hero background */
+        .hero-bg {
+            background-image: linear-gradient(rgba(15, 15, 15, 0.7), rgba(15, 15, 15, 0.85)), url('background.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        /* Image hover effects */
+        .art-card {
+            overflow: hidden;
+        }
+        .art-image {
+            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .art-card:hover .art-image,
+        .group:hover .art-image {
+            transform: scale(1.08);
+        }
+
+        /* Aspect ratio utility for video - Fixing the "unavailable" issue */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 ratio */
+            height: 0;
+            overflow: hidden;
+            background: #000;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body class="bg-gallery-50 text-gallery-900 font-sans antialiased">
+
+    <!-- Navigation Bar -->
+    <nav class="fixed w-full z-50 transition-all duration-300 bg-white/90 backdrop-blur-md border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0">
+                    <a href="#" class="font-serif text-2xl font-bold tracking-wider text-gallery-900">The Artistic Heritage</a>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-sm font-medium text-gray-600 hover:text-gallery-900 transition-colors uppercase tracking-widest">Home</a>
+                    <a href="#about" class="text-sm font-medium text-gray-600 hover:text-gallery-900 transition-colors uppercase tracking-widest">The Artists</a>
+                    <a href="#gallery" class="text-sm font-medium text-gray-600 hover:text-gallery-900 transition-colors uppercase tracking-widest">Paintings</a>
+                    <a href="#textiles" class="text-sm font-medium text-gray-600 hover:text-gallery-900 transition-colors uppercase tracking-widest">Textiles</a>
+                    <a href="#videos" class="text-sm font-medium text-gray-600 hover:text-gallery-900 transition-colors uppercase tracking-widest">Videos</a>
+                    <a href="#contact" class="text-sm font-medium text-gray-600 hover:text-gallery-900 transition-colors uppercase tracking-widest">Contact</a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gallery-900 hover:text-gray-600 focus:outline-none">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 pb-4">
+            <div class="px-2 pt-2 space-y-1 text-center">
+                <a href="#home" class="block px-3 py-2 text-base font-medium text-gray-600 hover:text-gallery-900 uppercase tracking-widest">Home</a>
+                <a href="#about" class="block px-3 py-2 text-base font-medium text-gray-600 hover:text-gallery-900 uppercase tracking-widest">The Artists</a>
+                <a href="#gallery" class="block px-3 py-2 text-base font-medium text-gray-600 hover:text-gallery-900 uppercase tracking-widest">Paintings</a>
+                <a href="#textiles" class="block px-3 py-2 text-base font-medium text-gray-600 hover:text-gallery-900 uppercase tracking-widest">Textiles</a>
+                <a href="#videos" class="block px-3 py-2 text-base font-medium text-gray-600 hover:text-gallery-900 uppercase tracking-widest">Videos</a>
+                <a href="#contact" class="block px-3 py-2 text-base font-medium text-gray-600 hover:text-gallery-900 uppercase tracking-widest">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-bg relative h-screen flex items-center justify-center text-center">
+        <div class="relative z-10 px-4 text-white max-w-4xl mx-auto">
+            <p class="text-sm md:text-base uppercase tracking-[0.3em] mb-4 text-gray-300">Federico Aguilar Alcuaz & Lang Dulay</p>
+            <h1 class="font-serif text-5xl md:text-7xl lg:text-8xl font-bold mb-6 drop-shadow-lg leading-tight">
+                The Artistic Heritage
+            </h1>
+            <p class="mt-4 text-lg md:text-xl text-gray-200 font-light max-w-2xl mx-auto mb-10 leading-relaxed">
+                Step into The Artistic Heritage, where every color, thread, and form tells a story of the Filipino spirit. Let your eyes wander through the bold, expressive creations of <i><b>_Federico Aguilar Alcuaz_</b></i>, whose art dances between abstraction and emotion, capturing movement, passion, and boundless imagination.
+            </p> 
+            <p class="mt-4 text-lg md:text-xl text-gray-200 font-light max-w-2xl mx-auto mb-10 leading-relaxed">
+                Feel the quiet strength of tradition in the works of <i><b>_Lang Dulay_</b></i>, whose sacred T’nalak weavings are born from dreams, each pattern echoing the heritage and identity of the T’boli people.
+            </p>
+            <a href="#gallery" class="inline-block border border-white text-white px-8 py-4 uppercase tracking-widest text-sm hover:bg-white hover:text-gallery-900 transition-all duration-300">
+                View Collection
+            </a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-serif text-4xl md:text-5xl font-bold mb-4 text-gallery-900">About the Artists</h2>
+                <div class="w-16 h-1 bg-gallery-900 mx-auto"></div>
+            </div>
+
+            <!-- Fred -->
+            <div class="flex flex-col lg:flex-row items-center gap-16 mb-24">
+                <div class="w-full lg:w-5/12">
+                    <img src="fred.webp" alt="Portrait of Fred" class="w-full h-auto object-cover rounded shadow-xl aspect-[3/4] grayscale hover:grayscale-0 transition-all duration-700">
+                </div>
+                <div class="w-full lg:w-7/12">
+                    <h3 class="font-serif text-3xl font-bold mb-4 text-gallery-900">Federico Aguilar Alcuaz</h3>
+                    <p class="text-gray-600 text-lg leading-relaxed mb-6 font-light">
+                        Federico Aguilar Alcuaz was known as a National Artist for Visual Arts and a major Filipino painter. He was known for his Cubist-inspired works across painting, sculpture, and mixed media. He was born on June 6, 1932 in Santa Ana, Manila. 
+                    <p class="text-gray-600 text-lg leading-relaxed font-light mb-8">
+                        During his college, he pursued an Associate in Arts degree at San Beda College in the evenings while also pursuing a Fine Arts degree at the University of the Philippines in the mornings. Later on, he moved to Barcelona, Spain to start his art career.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Lang Dulay -->
+            <div class="flex flex-col lg:flex-row-reverse items-center gap-16">
+                <div class="w-full lg:w-5/12">
+                    <img src="Lang Dulay.jpg" alt="Portrait of Lang Dulay" class="w-full h-auto object-cover rounded shadow-xl aspect-[3/4] grayscale hover:grayscale-0 transition-all duration-700">
+                </div>
+                <div class="w-full lg:w-7/12">
+                    <h3 class="font-serif text-3xl font-bold mb-4 text-gallery-900">Lang Dulay</h3>
+                    <p class="text-gray-600 text-lg leading-relaxed mb-6 font-light">
+                        Lang Dulay is a highly respected T’boli textile artist from Mindanao. She’s known for preserving the traditional art of t’nalak weaving; one of the reasons why she possesses the title of a GAMABA (The Gawad sa Manlilikha ng Bayan) artist back in 1998. 
+                    <p class="text-gray-600 text-lg leading-relaxed font-light mb-8">
+                        She played a huge role in keeping indigenous weaving traditions alive despite modernization. A master of her craft, she began weaving at a very young age— around 12 years old— learning from her mother and elders in her community. Weaving wasn’t just a skill for her; it was a cultural inheritance. 
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Exhibition Section -->
+    <section id="gallery" class="py-24 bg-gallery-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-serif text-4xl md:text-5xl font-bold mb-4 text-gallery-900">Selected Artworks</h2>
+                <div class="w-16 h-1 bg-gallery-900 mx-auto mb-4"></div>
+                <p class="text-gray-500 uppercase tracking-widest text-sm">Masterpieces of Federico Aguilar Alcuaz</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16">
+                <div class="group">
+                    <div class="art-card relative bg-gray-200 aspect-[4/3] rounded-sm shadow-md mb-6 cursor-pointer">
+                        <img src="His Amati Chelo, 1975.jpg" alt="His Amati Chelo, 1975" class="art-image w-full h-full object-cover">
+                    </div>
+                    <div class="text-center">
+                        <h3 class="font-serif text-2xl font-bold text-gallery-900 mb-2">His Amati Chelo</h3>
+                        <p class="text-gray-500 tracking-widest text-sm uppercase">1975</p>
+                    </div>
+                </div>
+                <div class="group">
+                    <div class="art-card relative bg-gray-200 aspect-[4/3] rounded-sm shadow-md mb-6 cursor-pointer">
+                        <img src="Seascape, 1978.jpg" alt="Seascape, 1978" class="art-image w-full h-full object-cover">
+                    </div>
+                    <div class="text-center">
+                        <h3 class="font-serif text-2xl font-bold text-gallery-900 mb-2">Seascape</h3>
+                        <p class="text-gray-500 tracking-widest text-sm uppercase">1978</p>
+                    </div>
+                </div>
+                <div class="group">
+                    <div class="art-card relative bg-gray-200 aspect-[4/3] rounded-sm shadow-md mb-6 cursor-pointer">
+                        <img src="Abstract with Blue, White and Black, 1978.jpg" alt="Abstract with Blue, White and Black, 1978" class="art-image w-full h-full object-cover">
+                    </div>
+                    <div class="text-center">
+                        <h3 class="font-serif text-2xl font-bold text-gallery-900 mb-2">Abstract with Blue, White and Black</h3>
+                        <p class="text-gray-500 tracking-widest text-sm uppercase">1978</p>
+                    </div>
+                </div>
+                <div class="group">
+                    <div class="art-card relative bg-gray-200 aspect-[4/3] rounded-sm shadow-md mb-6 cursor-pointer">
+                        <img src="Quiapo Bridge on Pasig River, 1982.jpg" alt="Quiapo Bridge on Pasig River, 1982" class="art-image w-full h-full object-cover">
+                    </div>
+                    <div class="text-center">
+                        <h3 class="font-serif text-2xl font-bold text-gallery-900 mb-2">Quiapo Bridge on Pasig River</h3>
+                        <p class="text-gray-500 tracking-widest text-sm uppercase">1982</p>
+                    </div>
+                </div>
+                <div class="group md:col-span-2 lg:w-1/2 mx-auto">
+                    <div class="art-card relative bg-gray-200 aspect-[4/3] rounded-sm shadow-md mb-6 cursor-pointer">
+                        <img src="Pasig River, 1987.jpg" alt="Pasig River, 1987" class="art-image w-full h-full object-cover">
+                    </div>
+                    <div class="text-center">
+                        <h3 class="font-serif text-2xl font-bold text-gallery-900 mb-2">Pasig River</h3>
+                        <p class="text-gray-500 tracking-widest text-sm uppercase">1987</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Textiles Section -->
+    <section id="textiles" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-serif text-4xl md:text-5xl font-bold mb-4 text-gallery-900">T'nalak Textiles</h2>
+                <div class="w-16 h-1 bg-gallery-900 mx-auto mb-4"></div>
+                <p class="text-gray-500 uppercase tracking-widest text-sm">Masterpieces by Lang Dulay</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+                <div class="group">
+                    <img src="Sobo - Wild Frog.jpg" class="w-full aspect-square object-cover shadow-md mb-4 art-image">
+                    <div class="text-center"><h3 class="font-serif text-xl font-bold">Sobo</h3><p class="text-xs uppercase text-gray-500">Wild Frog</p></div>
+                </div>
+                <div class="group">
+                    <img src="Leh Ala - Stream  Flow of the Alah River.jpg" class="w-full aspect-square object-cover shadow-md mb-4 art-image">
+                    <div class="text-center"><h3 class="font-serif text-xl font-bold">Leh Ala</h3><p class="text-xs uppercase text-gray-500">Stream Flow of the Alah River</p></div>
+                </div>
+                <div class="group">
+                    <img src="Gemewet - Interconnectedness.jpg" class="w-full aspect-square object-cover shadow-md mb-4 art-image">
+                    <div class="text-center"><h3 class="font-serif text-xl font-bold">Gemewet</h3><p class="text-xs uppercase text-gray-500">Interconnectedness</p></div>
+                </div>
+                <div class="group lg:col-start-1 lg:translate-x-1/2">
+                    <img src="Senkulo - Head to Head.jpg" class="w-full aspect-square object-cover shadow-md mb-4 art-image">
+                    <div class="text-center"><h3 class="font-serif text-xl font-bold">Senkulo</h3><p class="text-xs uppercase text-gray-500">Head to Head</p></div>
+                </div>
+                <div class="group lg:col-start-2 lg:translate-x-1/2">
+                    <img src="Dudum Lobun Bordered with Betek Kefung - Gathering of the clouds.jpg" class="w-full aspect-square object-cover shadow-md mb-4 art-image">
+                    <div class="text-center"><h3 class="font-serif text-xl font-bold">Dudum Lobun</h3><p class="text-xs uppercase text-gray-500">Gathering of the clouds</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Section -->
+    <section id="videos" class="py-24 bg-gallery-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-serif text-4xl md:text-5xl font-bold mb-4 text-gallery-900">Documentary Films</h2>
+                <div class="w-16 h-1 bg-gallery-900 mx-auto mb-4"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+                <!-- Alcuaz Video 1 -->
+                <div class="bg-white p-4 shadow-sm">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/cyuy6TH08rw" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="mt-4">
+                        <h3 class="font-serif text-xl font-bold">Exploring the Life of Alcuaz</h3>
+                        <p class="text-gray-500 text-xs uppercase tracking-widest">Documentary</p>
+                    </div>
+                </div>
+                <!-- Alcuaz Video 2 -->
+                <div class="bg-white p-4 shadow-sm">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/ySgsZEOoPgI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="mt-4">
+                        <h3 class="font-serif text-xl font-bold">Ateneo’s Tribute to Alcuaz</h3>
+                        <p class="text-gray-500 text-xs uppercase tracking-widest">Tribute</p>
+                    </div>
+                </div>
+                <!-- Lang Dulay Video 1 -->
+                <div class="bg-white p-4 shadow-sm">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/p443TQqJT6c" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="mt-4">
+                        <h3 class="font-serif text-xl font-bold">Short Documentary about Lang Dulay</h3>
+                        <p class="text-gray-500 text-xs uppercase tracking-widest">Fowler Museum at UCLA</p>
+                    </div>
+                </div>
+                <!-- Lang Dulay Video 2 -->
+                <div class="bg-white p-4 shadow-sm">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/azwMX32JSVg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="mt-4">
+                        <h3 class="font-serif text-xl font-bold">Lang Dulay Documentary</h3>
+                        <p class="text-gray-500 text-xs uppercase tracking-widest">ABS-CBN News</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer with Contact Info -->
+    <footer id="contact" class="bg-gallery-900 text-white py-20">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col items-center">
+            <h2 class="font-serif text-4xl font-bold mb-8 uppercase tracking-widest">Get in Touch</h2>
+            
+            <!-- Social and Email Links -->
+            <div class="flex flex-col md:flex-row items-center gap-8 md:gap-16 mb-12">
+                <a href="https://facebook.com" target="_blank" class="group flex items-center space-x-3 text-gray-400 hover:text-white transition-all duration-300">
+                    <i data-lucide="facebook" class="w-6 h-6 group-hover:scale-110 transition-transform"></i>
+                    <span class="text-sm uppercase tracking-widest">Facebook</span>
+                </a>
+                <a href="https://instagram.com" target="_blank" class="group flex items-center space-x-3 text-gray-400 hover:text-white transition-all duration-300">
+                    <i data-lucide="instagram" class="w-6 h-6 group-hover:scale-110 transition-transform"></i>
+                    <span class="text-sm uppercase tracking-widest">Instagram</span>
+                </a>
+                <a href="mailto:contact@fredandlang.com" class="group flex items-center space-x-3 text-gray-400 hover:text-white transition-all duration-300">
+                    <i data-lucide="mail" class="w-6 h-6 group-hover:scale-110 transition-transform"></i>
+                    <span class="text-sm uppercase tracking-widest">Email Us</span>
+                </a>
+            </div>
+
+            <div class="w-full h-px bg-white/10 mb-12 max-w-md"></div>
+
+            <p class="text-gray-500 text-xs font-light uppercase tracking-[0.2em] text-center">
+                &copy; <span id="year"></span> Virtual Museum of National Artists. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+        document.getElementById('year').textContent = new Date().getFullYear();
+        
+        // Mobile menu toggle logic
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+        
+        // Close menu on click
+        menu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => menu.classList.add('hidden'));
+        });
+    </script>
+</body>
+</html>
